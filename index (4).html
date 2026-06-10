@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dojjos de Formación Excelencia — Horse Argentina</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#000000;--bg2:#111111;--bg3:#1a1a1a;--bg4:#222222;
+  --border:#2a2a2a;--border2:#3a3a3a;
+  --orange:#FE6300;--orange-dim:#6a2a00;--orange-glow:rgba(254,99,0,0.12);
+  --white:#ffffff;--gray:#999999;--gray2:#555555;
+  --success-bg:#0d2e13;--success:#2d7a3a;
+  --danger-bg:#2e0d0d;--danger:#a33333;
+  --r:12px;--rs:8px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
+
+/* NAV */
+.topnav{position:sticky;top:0;z-index:100;background:rgba(0,0,0,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.nav-logo{font-size:13px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.nav-logo span{color:var(--orange);}
+.nav-links{display:flex;gap:.15rem;flex-wrap:wrap;}
+.nav-link{padding:.4rem .8rem;border-radius:6px;font-size:12px;color:var(--gray);cursor:pointer;border:none;background:transparent;transition:color .15s,background .15s;white-space:nowrap;}
+.nav-link:hover{color:var(--white);background:var(--bg3);}
+@media(max-width:560px){.nav-links{display:none;}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:55px 55px;opacity:.25;}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--orange-glow) 0%,transparent 68%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:700px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange-dim);padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;}
+.hero-title{font-size:clamp(30px,6vw,62px);font-weight:800;line-height:1.08;letter-spacing:-.025em;color:var(--white);margin-bottom:.6rem;}
+.hero-title span{color:var(--orange);}
+.hero-sub{font-size:clamp(13px,2vw,16px);color:var(--gray);line-height:1.65;margin-bottom:2.25rem;max-width:480px;margin-left:auto;margin-right:auto;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--orange);color:#fff;border:none;border-radius:var(--rs);padding:.72rem 1.4rem;font-size:13px;font-weight:500;cursor:pointer;transition:opacity .15s,transform .1s;text-decoration:none;}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--white);border:1px solid var(--border2);border-radius:var(--rs);padding:.72rem 1.4rem;font-size:13px;cursor:pointer;transition:border-color .15s,background .15s;text-decoration:none;}
+.btn-ghost:hover{border-color:var(--orange);background:var(--orange-glow);}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
+.stat{text-align:center;}
+.stat-num{font-size:30px;font-weight:700;color:var(--white);}
+.stat-label{font-size:11px;color:var(--gray);margin-top:2px;letter-spacing:.02em;}
+
+/* SECTIONS */
+.section{padding:5rem 1.5rem;max-width:980px;margin:0 auto;}
+.section-hd{text-align:center;margin-bottom:2.75rem;}
+.section-ey{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.4rem;}
+.section-title{font-size:clamp(20px,4vw,34px);font-weight:700;color:var(--white);margin-bottom:.4rem;}
+.section-desc{font-size:13px;color:var(--gray);line-height:1.6;max-width:500px;margin:0 auto;}
+.divider{height:1px;background:var(--border);max-width:980px;margin:0 auto;}
+
+/* TRAINERS */
+.trainers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:1rem;}
+.trainer-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.1rem;text-align:center;transition:border-color .2s,transform .15s;cursor:pointer;position:relative;overflow:hidden;}
+.trainer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .2s;}
+.trainer-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.trainer-card:hover::before{transform:scaleX(1);}
+.t-av{width:72px;height:72px;border-radius:50%;margin:0 auto .9rem;background:var(--bg4);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--orange);overflow:hidden;}
+.t-av img{width:100%;height:100%;object-fit:cover;}
+.t-name{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.t-proceso{font-size:10px;font-weight:500;background:var(--bg4);color:var(--gray);border:1px solid var(--border2);border-radius:20px;padding:2px 8px;display:inline-block;margin-bottom:5px;}
+.t-area{font-size:11px;color:var(--gray);line-height:1.4;margin-bottom:.75rem;}
+.cert-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;background:rgba(254,99,0,.1);color:var(--orange);border:1px solid var(--orange-dim);padding:3px 10px;border-radius:20px;cursor:pointer;transition:background .15s;}
+.cert-btn:hover{background:rgba(254,99,0,.22);}
+
+/* CERT MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:250;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);width:100%;max-width:460px;overflow:hidden;}
+.modal-header{background:var(--bg3);border-bottom:1px solid var(--border);padding:.9rem 1.2rem;display:flex;align-items:center;gap:.6rem;}
+.modal-header i{font-size:18px;color:var(--orange);}
+.modal-header span{font-size:13px;font-weight:600;color:var(--white);flex:1;}
+.modal-close{background:none;border:none;color:var(--gray2);cursor:pointer;font-size:17px;padding:.2rem;}
+.modal-close:hover{color:var(--white);}
+.modal-body{padding:1.75rem;text-align:center;}
+.cert-av{width:80px;height:80px;border-radius:50%;background:var(--bg3);border:2.5px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:var(--orange);margin:0 auto .9rem;}
+.cert-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}
+.cert-name{font-size:20px;font-weight:700;color:var(--white);margin-bottom:.2rem;}
+.cert-role-txt{font-size:12px;color:var(--gray);margin-bottom:1.25rem;}
+.cert-body{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:1rem;margin-bottom:1.25rem;font-size:12px;color:var(--gray);line-height:1.6;}
+.cert-body strong{color:var(--white);}
+.cert-areas-txt{color:var(--orange);}
+.cert-footer{display:flex;justify-content:space-between;font-size:11px;color:var(--gray2);border-top:1px solid var(--border);padding-top:.9rem;}
+
+/* COURSES */
+.courses-list{display:flex;flex-direction:column;gap:.65rem;}
+.course-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s;}
+.course-item:hover{border-color:var(--border2);}
+.course-hd{display:flex;align-items:center;gap:.9rem;padding:1rem 1.15rem;cursor:pointer;}
+.course-ico{width:38px;height:38px;border-radius:var(--rs);background:var(--bg4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.course-ico i{font-size:19px;color:var(--orange);}
+.course-inf{flex:1;min-width:0;}
+.course-name{font-size:13px;font-weight:500;color:var(--white);}
+.course-meta{font-size:11px;color:var(--gray);margin-top:2px;}
+.course-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
+.cbadge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;}
+.cb-q{background:rgba(254,99,0,.13);color:#ff9966;}
+.cb-f{background:rgba(100,160,220,.13);color:#88bbee;}
+.cb-s{background:rgba(60,180,80,.13);color:#66cc88;}
+.cb-m{background:rgba(180,100,220,.13);color:#cc88ee;}
+.cb-g{background:rgba(200,180,50,.13);color:#ddcc44;}
+.cb-e{background:rgba(180,80,80,.13);color:#ee9999;}
+.course-arr{color:var(--gray2);transition:transform .25s;flex-shrink:0;}
+.course-arr.open{transform:rotate(180deg);}
+.course-bd{display:none;padding:.75rem 1.15rem 1.15rem;border-top:1px solid var(--border);}
+.course-bd.open{display:block;}
+.course-desc{font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:.75rem;}
+.course-det{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.9rem;}
+.cdet{font-size:11px;color:var(--gray);display:flex;align-items:center;gap:3px;}
+.cdet i{font-size:13px;color:var(--orange);}
+
+/* GAMES */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.game-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.35rem 1.15rem;cursor:pointer;transition:border-color .2s,transform .15s;text-decoration:none;display:block;}
+.game-card:hover{border-color:var(--orange);transform:translateY(-2px);}
+.game-ico{width:46px;height:46px;border-radius:10px;background:var(--bg4);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;}
+.game-ico i{font-size:22px;color:var(--orange);}
+.game-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.game-desc{font-size:11px;color:var(--gray);line-height:1.5;margin-bottom:.7rem;}
+.gpill{font-size:10px;padding:3px 9px;border-radius:20px;display:inline-block;}
+.gp-live{background:rgba(254,99,0,.15);color:var(--orange);}
+.gp-soon{background:var(--bg4);color:var(--gray2);}
+.gp-ai{background:rgba(100,180,255,.12);color:#88ccff;}
+
+/* QUIZ */
+.quiz-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:1.75rem;}
+.quiz-top{background:var(--bg3);padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.7rem;}
+.quiz-top i{font-size:20px;color:var(--orange);}
+.quiz-top h3{font-size:14px;font-weight:600;color:var(--white);}
+.quiz-top p{font-size:11px;color:var(--gray);margin-top:1px;}
+.quiz-body{padding:1.4rem;}
+.qlabel{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--gray2);margin-bottom:.55rem;}
+.mode-row{display:flex;gap:.5rem;margin-bottom:1.15rem;flex-wrap:wrap;}
+.mode-btn{flex:1;min-width:90px;padding:.55rem .5rem;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);font-size:12px;color:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .15s;}
+.mode-btn:hover{border-color:var(--border2);color:var(--white);}
+.mode-btn.sel{background:var(--bg3);border-color:var(--orange);color:var(--orange);}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:.45rem;margin-bottom:1.15rem;}
+.topic-btn{padding:.45rem .6rem;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);font-size:12px;color:var(--gray);cursor:pointer;text-align:center;transition:all .15s;}
+.topic-btn:hover{border-color:var(--border2);color:var(--white);}
+.topic-btn.sel{background:rgba(254,99,0,.1);border-color:var(--orange);color:var(--orange);}
+.quiz-controls{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;}
+.quiz-controls label{font-size:12px;color:var(--gray);}
+.quiz-controls select{padding:.45rem .65rem;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);color:var(--white);font-size:12px;cursor:pointer;}
+.gen-btn{display:flex;align-items:center;gap:6px;padding:.6rem 1.3rem;background:var(--orange);color:#fff;border:none;border-radius:var(--rs);font-size:13px;font-weight:500;cursor:pointer;transition:opacity .15s;}
+.gen-btn:hover{opacity:.88;}
+.gen-btn:disabled{opacity:.4;cursor:not-allowed;}
+.quiz-area{margin-top:1.4rem;}
+.qloading{text-align:center;padding:2.25rem;color:var(--gray);font-size:13px;display:none;}
+.qloading i{font-size:30px;color:var(--orange);display:block;margin-bottom:.6rem;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.q-block{margin-bottom:1.1rem;padding:1rem 1.1rem;background:var(--bg3);border-radius:var(--rs);border:1px solid var(--border);}
+.q-num{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray2);margin-bottom:.35rem;}
+.q-text{font-size:13px;font-weight:500;color:var(--white);margin-bottom:.75rem;line-height:1.45;}
+.q-opts{display:flex;flex-direction:column;gap:.35rem;}
+.q-opt{padding:.55rem .8rem;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);font-size:12px;color:var(--gray);cursor:pointer;text-align:left;transition:all .15s;}
+.q-opt:hover:not(:disabled){background:var(--bg2);border-color:var(--border2);color:var(--white);}
+.q-opt.correct{background:var(--success-bg);border-color:var(--success);color:#66cc88;}
+.q-opt.wrong{background:var(--danger-bg);border-color:var(--danger);color:#ff8888;}
+.q-opt:disabled{cursor:default;}
+.q-expl{display:none;margin-top:.65rem;font-size:12px;color:var(--gray);line-height:1.55;padding:.55rem .8rem;background:var(--bg4);border-radius:6px;border-left:2px solid var(--orange);}
+.q-expl.show{display:block;}
+.score-card{text-align:center;padding:1.75rem;background:var(--bg3);border-radius:var(--rs);border:1px solid var(--border);margin-top:.9rem;display:none;}
+.score-num{font-size:48px;font-weight:700;color:var(--orange);}
+.score-sub{font-size:12px;color:var(--gray);margin-top:3px;}
+.score-msg{font-size:14px;color:var(--white);margin-top:.65rem;font-weight:500;}
+.retry-btn{margin-top:1rem;padding:.6rem 1.4rem;background:var(--bg4);border:1px solid var(--border2);color:var(--white);border-radius:var(--rs);font-size:13px;cursor:pointer;transition:border-color .15s;}
+.retry-btn:hover{border-color:var(--orange);color:var(--orange);}
+
+/* FORKY */
+.forky-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;width:56px;height:56px;border-radius:50%;background:var(--orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(254,99,0,.4);transition:transform .2s,box-shadow .2s;}
+.forky-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(254,99,0,.5);}
+.forky-panel{position:fixed;bottom:5.25rem;right:1.5rem;z-index:200;width:330px;max-width:calc(100vw - 2rem);background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;display:none;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.7);max-height:510px;}
+.forky-panel.open{display:flex;}
+.forky-hd{background:var(--bg3);border-bottom:1px solid var(--border);padding:.8rem .95rem;display:flex;align-items:center;gap:.65rem;}
+.forky-av{width:34px;height:34px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.forky-ht h4{font-size:13px;font-weight:600;color:var(--white);}
+.forky-ht p{font-size:11px;color:var(--gray);}
+.forky-x{margin-left:auto;background:none;border:none;color:var(--gray2);cursor:pointer;font-size:17px;padding:.2rem;}
+.forky-x:hover{color:var(--white);}
+.forky-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.55rem;min-height:200px;}
+.fmsg{max-width:90%;padding:.5rem .8rem;border-radius:10px;font-size:12.5px;line-height:1.5;}
+.fmsg.bot{background:var(--bg4);color:var(--gray);align-self:flex-start;border-radius:10px 10px 10px 3px;}
+.fmsg.user{background:var(--orange);color:#fff;align-self:flex-end;border-radius:10px 10px 3px 10px;}
+.fmsg.bot strong{color:var(--white);}
+.fmenu{display:flex;flex-direction:column;gap:.35rem;margin-top:.35rem;}
+.fmenu-btn{padding:.45rem .7rem;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);color:var(--white);font-size:12px;cursor:pointer;text-align:left;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:6px;}
+.fmenu-btn:hover{border-color:var(--orange);background:var(--orange-glow);}
+.forky-inp-row{border-top:1px solid var(--border);padding:.55rem;display:flex;gap:.45rem;}
+.forky-inp{flex:1;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);padding:.4rem .7rem;color:var(--white);font-size:12px;outline:none;}
+.forky-inp:focus{border-color:var(--border2);}
+.forky-send{background:var(--orange);border:none;color:#fff;border-radius:var(--rs);padding:.4rem .7rem;cursor:pointer;font-size:15px;display:flex;align-items:center;}
+.forky-send:hover{opacity:.88;}
+
+/* ADMIN */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.88);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;}
+.admin-overlay.open{display:flex;}
+.admin-panel{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);width:100%;max-width:660px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;}
+.admin-hd{background:var(--bg3);border-bottom:1px solid var(--border);padding:.95rem 1.2rem;display:flex;align-items:center;gap:.65rem;}
+.admin-hd i{font-size:19px;color:var(--orange);}
+.admin-hd h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.admin-x{background:none;border:none;color:var(--gray2);cursor:pointer;font-size:17px;}
+.admin-x:hover{color:var(--white);}
+.admin-lock{padding:2rem;text-align:center;}
+.admin-lock i{font-size:34px;color:var(--orange);display:block;margin-bottom:.9rem;}
+.admin-lock p{font-size:13px;color:var(--gray);margin-bottom:.9rem;}
+.lock-inp{width:100%;max-width:260px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);padding:.6rem 1rem;color:var(--white);font-size:15px;letter-spacing:.1em;outline:none;text-align:center;display:block;margin:0 auto .75rem;}
+.lock-inp:focus{border-color:var(--orange);}
+.lock-err{font-size:12px;color:#ff8888;display:none;margin-bottom:.45rem;}
+.admin-body{flex:1;overflow-y:auto;padding:1.15rem;display:flex;flex-direction:column;gap:.9rem;}
+.admin-chat{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;min-height:240px;background:var(--bg3);border-radius:var(--rs);padding:.8rem;border:1px solid var(--border);}
+.amsg{max-width:94%;padding:.5rem .8rem;border-radius:10px;font-size:12.5px;line-height:1.55;white-space:pre-wrap;}
+.amsg.bot{background:var(--bg4);color:var(--gray);align-self:flex-start;}
+.amsg.user{background:var(--orange);color:#fff;align-self:flex-end;}
+.amsg.bot strong{color:var(--white);}
+.amsg code{background:var(--bg);padding:1px 4px;border-radius:3px;font-size:11px;}
+.admin-inp-row{display:flex;gap:.5rem;}
+.admin-inp{flex:1;background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);padding:.55rem .8rem;color:var(--white);font-size:13px;outline:none;}
+.admin-inp:focus{border-color:var(--border2);}
+.admin-send{background:var(--orange);border:none;color:#fff;border-radius:var(--rs);padding:.55rem .95rem;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.admin-send:hover{opacity:.88;}
+.admin-send:disabled{opacity:.4;cursor:not-allowed;}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:1.75rem 1.5rem;text-align:center;max-width:980px;margin:0 auto;}
+.footer p{font-size:11px;color:var(--gray2);}
+.footer span{color:var(--orange);}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .trainers-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+  .games-grid{grid-template-columns:1fr 1fr;}
+  .topic-grid{grid-template-columns:repeat(2,1fr);}
+  .mode-row{flex-direction:column;}
+  .mode-btn{flex:none;}
+  .forky-panel{width:calc(100vw - 1.5rem);right:.75rem;}
+  .admin-panel{max-height:95vh;}
+  .hero-stats{gap:1.5rem;}
+}
+@media(max-width:360px){
+  .games-grid{grid-template-columns:1fr;}
+  .trainers-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-logo"><i class="ti ti-flame"></i> Horse <span>Argentina</span></div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="goTo('semana-calidad')" style="color:var(--orange)"><i class="ti ti-star" style="font-size:11px;"></i> Semana Calidad</button>
+    <button class="nav-link" onclick="goTo('trainers')">Formadores</button>
+    <button class="nav-link" onclick="goTo('courses')">Formaciones</button>
+    <button class="nav-link" onclick="goTo('games')">Juegos</button>
+    <button class="nav-link" onclick="openAdmin()"><i class="ti ti-lock" style="font-size:11px;"></i> Admin</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i class="ti ti-award"></i> Escuela de Habilidades Horse Argentina</div>
+    <h1 class="hero-title">Dojjos de Formación<br><span>Excelencia</span></h1>
+    <p class="hero-sub">Tu plataforma de aprendizaje en planta. Formadores certificados, formaciones del catálogo 2026 y desafíos para poner a prueba tu conocimiento.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="goTo('courses')"><i class="ti ti-school"></i> Ver formaciones</button>
+      <button class="btn-ghost" onclick="goTo('games')"><i class="ti ti-device-gamepad-2"></i> Jugar ahora</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">21+</div><div class="stat-label">Formaciones activas</div></div>
+      <div class="stat"><div class="stat-num">22</div><div class="stat-label">Formadores certificados</div></div>
+      <div class="stat"><div class="stat-num" style="font-size:16px;line-height:1.4;">IATF 16949<br>ISO 9001 · 14001</div><div class="stat-label">Normas alineadas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA DE LA CALIDAD -->
+<section id="semana-calidad" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 1.5rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.12;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;border-radius:50%;background:radial-gradient(ellipse,rgba(254,99,0,0.09) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:980px;margin:0 auto;position:relative;z-index:1;">
+
+    <div style="display:flex;flex-wrap:wrap;gap:2.5rem;align-items:center;justify-content:space-between;">
+
+      <div style="flex:1;min-width:260px;">
+        <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange-dim);padding:4px 12px;border-radius:20px;margin-bottom:1rem;">
+          <i class="ti ti-calendar-event"></i> Próximamente
+        </div>
+        <h2 style="font-size:clamp(24px,4vw,42px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;">
+          Semana de la<br><span style="color:var(--orange);">Calidad 2026</span>
+        </h2>
+        <p style="font-size:clamp(14px,2vw,18px);font-style:italic;color:var(--orange);font-weight:500;margin-bottom:1rem;letter-spacing:.01em;">
+          "La calidad no es un destino,<br>es el camino que elegimos cada día."
+        </p>
+        <p style="font-size:14px;color:var(--gray);line-height:1.65;max-width:480px;">
+          Quedate atento a esta página — durante la Semana de la Calidad vas a poder <strong style="color:var(--white);">inscribirte a las <strong style="color:var(--white);">formaciones especiales</strong> de la semana y <strong style="color:var(--white);">evaluar el conocimiento adquirido</strong> en las formaciones obligatorias directamente desde acá.
+        </p>
+        <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;">
+          <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);"><i class="ti ti-circle-check" style="color:var(--orange);font-size:16px;"></i> Formaciones opcionales</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);"><i class="ti ti-circle-check" style="color:var(--orange);font-size:16px;"></i> Evaluaciones online</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);"><i class="ti ti-circle-check" style="color:var(--orange);font-size:16px;"></i> Juegos y desafíos</div>
+        </div>
+      </div>
+
+      <div style="flex-shrink:0;">
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:1.75rem 2rem;text-align:center;min-width:220px;">
+          <div style="font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;">Cuenta regresiva</div>
+          <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:1rem;" id="countdown-wrap">
+            <div style="text-align:center;">
+              <div style="font-size:36px;font-weight:700;color:var(--white);line-height:1;" id="cd-dias">--</div>
+              <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">días</div>
+            </div>
+            <div style="font-size:30px;color:var(--border2);padding-top:4px;">:</div>
+            <div style="text-align:center;">
+              <div style="font-size:36px;font-weight:700;color:var(--white);line-height:1;" id="cd-hs">--</div>
+              <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">horas</div>
+            </div>
+            <div style="font-size:30px;color:var(--border2);padding-top:4px;">:</div>
+            <div style="text-align:center;">
+              <div style="font-size:36px;font-weight:700;color:var(--white);line-height:1;" id="cd-min">--</div>
+              <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">min</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--gray);border-top:1px solid var(--border);padding-top:.85rem;">
+            <i class="ti ti-calendar" style="color:var(--orange);"></i> Semana 27 · Julio 2026
+          </div>
+          <div style="margin-top:1rem;">
+            <div style="font-size:11px;color:var(--gray2);margin-bottom:.5rem;">Avisame cuando empiece</div>
+            <div style="display:flex;gap:.4rem;" id="notify-form">
+              <input id="notify-email" type="email" placeholder="tu@email.com" style="flex:1;min-width:0;background:var(--bg4);border:1px solid var(--border2);border-radius:6px;padding:.4rem .6rem;color:var(--white);font-size:12px;outline:none;" required>
+              <button onclick="notifyMe()" style="background:var(--orange);border:none;color:#fff;border-radius:6px;padding:.4rem .75rem;font-size:12px;cursor:pointer;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+                <i class="ti ti-bell"></i>
+              </button>
+            </div>
+            <div id="notify-ok" style="display:none;font-size:12px;color:#66cc88;margin-top:.4rem;"><i class="ti ti-circle-check"></i> ¡Te anotamos! Te avisamos cuando arranque.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FORMADORES -->
+<section class="section" id="trainers">
+  <div class="section-hd">
+    <div class="section-ey">Equipo humano</div>
+    <h2 class="section-title">Nuestros formadores certificados</h2>
+    <p class="section-desc">Todos validados por RRHH y Calidad. Tocá una tarjeta para ver el certificado de cada formador.</p>
+  </div>
+  <div class="trainers-grid">
+
+    <div class="trainer-card" onclick="openCert('LC','Lucía Catalán','PM25648','PM02','Calidad · Sistema · IATF · Auditorías internas · QRQC · Análisis de causas','Docente UTN · Formadora Renault 6 años','2025')">
+      <div class="t-av">LC</div>
+      <div class="t-name">Lucía Catalán</div>
+      <div class="t-proceso">PM02</div>
+      <div class="t-area">Calidad · IATF · QRQC · Auditorías</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('SP','Sebastián Paz','LA73238','PM01','Tratamiento de no conformes · Criterios de calidad','Depto. de Calidad — formador de incorporaciones nuevas','2025')">
+      <div class="t-av">SP</div>
+      <div class="t-name">Sebastián Paz</div>
+      <div class="t-proceso">PM01</div>
+      <div class="t-area">No conformes · Criterios calidad · FOS</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('MR','Magdalena Ravanelli','LA04015','PM02 · EP5 · EP3','Core tools · Sistema de calidad · Auditorías internas · OPT · AMFE','Formada en Renault como JU — proceso de auditorías internas','2025')">
+      <div class="t-av">MR</div>
+      <div class="t-name">Magdalena Ravanelli</div>
+      <div class="t-proceso">PM02 · EP5 · EP3</div>
+      <div class="t-area">Core tools · AMFE · Auditorías · OPT</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('DG','Diego González','LA73887','EP5','Metrología','Formador de metrólogos incorporados — experiencia comprobada en el área','2025')">
+      <div class="t-av">DG</div>
+      <div class="t-name">Diego González</div>
+      <div class="t-proceso">EP5</div>
+      <div class="t-area">Metrología · Limpieza de mármol</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('MRa','Melina Ranguinao','PM22687','EP1','Seguridad e Higiene · 5S · 10 MR · Política de seguridad','Responsable de HSE — forma a toda la organización en seguridad','2025')">
+      <div class="t-av">MG</div>
+      <div class="t-name">Melina Ranguinao</div>
+      <div class="t-proceso">EP1</div>
+      <div class="t-area">Seguridad e Higiene · 5S · 10 MR</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('GV','Guillermo Vannucci','LA73267','CP3','Habilidades en fabricación · FOS · 5S operadores','Formado en Renault como JU','2025')">
+      <div class="t-av">GV</div>
+      <div class="t-name">Guillermo Vannucci</div>
+      <div class="t-proceso">CP3</div>
+      <div class="t-area">Fabricación · FOS · 5S operadores</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('CB','Cristian Barrionuevo','LA04388','CP3','Habilidades en fabricación · FOS · 5S operadores · Autocontrol','Experiencia docente verificada en CV','2025')">
+      <div class="t-av">CB</div>
+      <div class="t-name">Cristian Barrionuevo</div>
+      <div class="t-proceso">CP3</div>
+      <div class="t-area">Fabricación · FOS · Autocontrol · 5S</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('MRu','Marcelo Ruano','LA71946','CP3','Habilidades en fabricación · FOS · 5S operadores','Formado en Renault como JU','2025')">
+      <div class="t-av">MR</div>
+      <div class="t-name">Marcelo Ruano</div>
+      <div class="t-proceso">CP3</div>
+      <div class="t-area">Fabricación · FOS · 5S operadores</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('WF','Walter Farías','LA71304','CP3','Habilidades en fabricación · FOS · 5S operadores','Formado en Renault como JU/JT','2025')">
+      <div class="t-av">WF</div>
+      <div class="t-name">Walter Farías</div>
+      <div class="t-proceso">CP3</div>
+      <div class="t-area">Fabricación · FOS · 5S operadores</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('GI','Guillermo Ivanoff','LA03911','CP3','Control de procesos · Evaluación de eficacia','Formado en Renault como JU — destreza nivel 4','2025')">
+      <div class="t-av">GI</div>
+      <div class="t-name">Guillermo Ivanoff</div>
+      <div class="t-proceso">CP3</div>
+      <div class="t-area">Control de procesos · Eficacia proceso</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('AM','Ariel Mazzoni','LA74716','EP4','Gestión del mantenimiento PMP · 5S en mantenimiento','Formado en Renault como JU/JT','2025')">
+      <div class="t-av">AM</div>
+      <div class="t-name">Ariel Mazzoni</div>
+      <div class="t-proceso">EP4</div>
+      <div class="t-area">Mantenimiento PMP · 5S mantenimiento</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('LC2','Luciano Cambi','LA73881','EP3','Gestión de logística · 5S en logística','Responsable del proceso logístico — amplia trayectoria','2025')">
+      <div class="t-av">LC</div>
+      <div class="t-name">Luciano Cambi</div>
+      <div class="t-proceso">EP3</div>
+      <div class="t-area">Logística · 5S en logística</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('EA','Esteban Alonso','LA73266','CP2a','Plan de control','Formación en RG — vasta experiencia en el sector','2025')">
+      <div class="t-av">EA</div>
+      <div class="t-name">Esteban Alonso</div>
+      <div class="t-proceso">CP2a</div>
+      <div class="t-area">Plan de control</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('RR','Rubén Rolfo','LA00274','CP2a','Proceso de inyección de aluminio · Torre Fusora','Formación en RG — vasta experiencia en el sector','2025')">
+      <div class="t-av">RR</div>
+      <div class="t-name">Rubén Rolfo</div>
+      <div class="t-proceso">CP2a</div>
+      <div class="t-area">Inyección de aluminio · Torre Fusora</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('AmM','Amalia Mendoza','PM24482','Ambiente','Medio Ambiente · Selección de residuos','Experiencia docente verificada en CV','2025')">
+      <div class="t-av">AM</div>
+      <div class="t-name">Amalia Mendoza</div>
+      <div class="t-proceso">Ambiente</div>
+      <div class="t-area">Medio ambiente · Residuos</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('MM','Mauro Marconeto','LA04384','IT','Formación en IA · Aplicaciones y funciones','Experiencia laboral y trayectoria en la empresa','2025')">
+      <div class="t-av">MM</div>
+      <div class="t-name">Mauro Marconeto</div>
+      <div class="t-proceso">IT</div>
+      <div class="t-area">Inteligencia Artificial · Aplicaciones</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('CC','Consuelo Casares','PM23475','Excelencia','Animaciones · Indicadores · 5S','Formaciones de Excelencia — viaje a Brasil · Comités de Excelencia','2025')">
+      <div class="t-av">CC</div>
+      <div class="t-name">Consuelo Casares</div>
+      <div class="t-proceso">Excelencia</div>
+      <div class="t-area">Animaciones · Indicadores · 5S</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('AD','Agustina Díaz','PM28349','EP1','Gestión de personas · Inducción de nuevo personal','Formación en RG — vasta experiencia en el sector','2025')">
+      <div class="t-av">AD</div>
+      <div class="t-name">Agustina Díaz</div>
+      <div class="t-proceso">EP1</div>
+      <div class="t-area">Gestión de personas · Inducción</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+    <div class="trainer-card" onclick="openCert('VR','Valentina Riorda','','CP2a','Métodos de análisis · QRQC','Experiencia académica y laboral en métodos de análisis','2025')">
+      <div class="t-av">VR</div>
+      <div class="t-name">Valentina Riorda</div>
+      <div class="t-proceso">CP2a</div>
+      <div class="t-area">Métodos de análisis · QRQC</div>
+      <div class="cert-btn"><i class="ti ti-certificate"></i> Certificado</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERT MODAL -->
+<div class="modal-overlay" id="cert-modal" onclick="closeCert()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <i class="ti ti-certificate"></i>
+      <span>Certificado de Formador Validado</span>
+      <button class="modal-close" onclick="closeCert()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="cert-av" id="c-av"></div>
+      <div class="cert-label">Certifica que</div>
+      <div class="cert-name" id="c-name"></div>
+      <div class="cert-role-txt" id="c-user"></div>
+      <div class="cert-body">
+        Ha completado satisfactoriamente el proceso de validación como <strong>Formador Interno</strong> de la <strong>Escuela de Habilidades Horse Argentina</strong>, acreditando competencias en:<br><br>
+        <span class="cert-areas-txt" id="c-areas"></span><br><br>
+        <span style="font-size:11px;color:var(--gray2);" id="c-exp"></span>
+      </div>
+      <div class="cert-footer">
+        <span>Horse Argentina · Córdoba · HPDC</span>
+        <span id="c-year"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FORMACIONES -->
+<section class="section" id="courses">
+  <div class="section-hd">
+    <div class="section-ey">Catálogo 2026</div>
+    <h2 class="section-title">Formaciones disponibles</h2>
+    <p class="section-desc">Tocá cada formación para ver los detalles. Hablá con Forky para solicitar la tuya.</p>
+  </div>
+  <div class="courses-list">
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-clipboard-check"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Política de Calidad</div>
+          <div class="course-meta">Anual · Interna · Presencial · Toda la organización</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Difusión de la política de calidad. Asegurar que todos conozcan y recuerden la política, se actualicen ante cambios y mantengan el compromiso y la cultura de calidad.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 34/35</span>
+          <span class="cdet"><i class="ti ti-users"></i> Toda la organización</span>
+          <span class="cdet"><i class="ti ti-user"></i> L. Catalán / M. Ravanelli</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Política de Calidad')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-zoom-question"></i></div>
+        <div class="course-inf">
+          <div class="course-name">QRQC — Animación y resolución de problemas</div>
+          <div class="course-meta">FORM_ESC_001 · Anual · Interna · Pilotos y suplentes QRQC</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Desarrollar habilidades para la animación QRQC. Mantener habilidades, retomar buenas prácticas y asegurar cumplimiento del estándar. Cultura de calidad.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 27</span>
+          <span class="cdet"><i class="ti ti-users"></i> Pilotos y suplentes mesa QRQC</span>
+          <span class="cdet"><i class="ti ti-user"></i> L. Catalán</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('QRQC — Animación y resolución de problemas')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-layout-grid"></i></div>
+        <div class="course-inf">
+          <div class="course-name">5S Supervisores</div>
+          <div class="course-meta">FORM_ESC_002 · Anual · Interna · P/V · Supervisores e integrantes QRQC</div>
+          <div class="course-badges"><span class="cbadge cb-f">Fabricación</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Conocer y aplicar la metodología 5S con sus equipos. Asegurar cultura de 5S en todos los sectores de planta.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 26</span>
+          <span class="cdet"><i class="ti ti-users"></i> Supervisores e integrantes mesa QRQC</span>
+          <span class="cdet"><i class="ti ti-user"></i> M. Ranguinao</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('5S Supervisores')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-layout-grid"></i></div>
+        <div class="course-inf">
+          <div class="course-name">5S Operadores</div>
+          <div class="course-meta">FORM_ESC_003 · Anual · Interna · Presencial · Operadores</div>
+          <div class="course-badges"><span class="cbadge cb-f">Fabricación</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Conocer y aplicar 5S en todos los puestos. Cultura 5S diaria en planta. Para asegurar cultura y mantener habilidades.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 26</span>
+          <span class="cdet"><i class="ti ti-users"></i> Operadores</span>
+          <span class="cdet"><i class="ti ti-user"></i> Vannucci / Barrionuevo / Ruano / Farías / Ivanoff / Mazzoni / Cambi</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('5S Operadores')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-eye-check"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Criterios de aceptación de calidad</div>
+          <div class="course-meta">FORM_ESC_009 · Anual · Interna · Presencial · Operadores</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Conocer el impacto de las operaciones en el cliente final. Hacer bien a la primera vez, asegurar reactividad y comportamientos de calidad de manera continua.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 29/26 — Semana de la Calidad</span>
+          <span class="cdet"><i class="ti ti-users"></i> Todos los operadores</span>
+          <span class="cdet"><i class="ti ti-user"></i> S. Paz</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Criterios de aceptación de calidad')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-search"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Análisis de causas</div>
+          <div class="course-meta">FORM_ESC_010 · Anual · Interna · P/V · Analistas, Supervisores, JT, Pilotos</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Profundizar en herramientas de análisis de causas para mejores análisis, mejores planes de acción y erradicar desde raíz los problemas. Reducir reincidencia.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 29/26 — Semana de la Calidad</span>
+          <span class="cdet"><i class="ti ti-users"></i> Analistas · Supervisores · JT · Pilotos</span>
+          <span class="cdet"><i class="ti ti-user"></i> L. Catalán / M. Ravanelli</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Análisis de causas')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-file-text"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Creación de FIPS con Excelencia</div>
+          <div class="course-meta">FORM_ESC_013 · Anual · Interna · P/V · Pilotos y copilotos de procesos</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Rediseñar la capacitación sobre el uso estratégico de las FIP: enfocado en su utilidad real, no solo como requisito. Asegurar que la FIP se mantenga actualizada y aporte valor.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 29/26 — Semana de la Calidad</span>
+          <span class="cdet"><i class="ti ti-users"></i> Pilotos y copilotos de procesos</span>
+          <span class="cdet"><i class="ti ti-user"></i> Consuelo Casares</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Creación de FIPS con Excelencia')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-alert-triangle"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Tratamiento de producto no conforme y sospechoso</div>
+          <div class="course-meta">FORM_ESC_014/015 · Anual · Interna · P/V · Supervisores y Operadores</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Que ningún producto no conforme llegue a cliente. Actualización según procedimiento corporativo y local. Para supervisores y operadores por separado.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 24/27</span>
+          <span class="cdet"><i class="ti ti-users"></i> Supervisores y Operadores</span>
+          <span class="cdet"><i class="ti ti-user"></i> S. Paz / M. Ravanelli</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Tratamiento de producto no conforme y sospechoso')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-tool"></i></div>
+        <div class="course-inf">
+          <div class="course-name">OPT — Herramienta de observación en puesto</div>
+          <div class="course-meta">FORM_ESC_004 · Anual · Interna · P/V · Supervisores y JT</div>
+          <div class="course-badges"><span class="cbadge cb-f">Fabricación</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Aplicar la herramienta OPT/Chuet. Herramienta clave para la mejora continua y feedback con los operadores. Para mantener y reforzar su uso.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 32</span>
+          <span class="cdet"><i class="ti ti-users"></i> Supervisores y JT</span>
+          <span class="cdet"><i class="ti ti-user"></i> M. Ravanelli</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('OPT — Herramienta de observación en puesto')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-shield-check"></i></div>
+        <div class="course-inf">
+          <div class="course-name">10 MR — 10 Principios de Seguridad</div>
+          <div class="course-meta">FORM_ESC_006 · Anual · Interna · P/V · Todas las personas</div>
+          <div class="course-badges"><span class="cbadge cb-s">Seguridad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Procurar la seguridad de las personas. Promover la cultura de trabajar de manera segura conociendo y aplicando los 10 principios fundamentales.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 06/27</span>
+          <span class="cdet"><i class="ti ti-users"></i> Todas las personas</span>
+          <span class="cdet"><i class="ti ti-user"></i> M. Ranguinao / S. Paz</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('10 MR — 10 Principios de Seguridad')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-recycle"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Selección de residuos y medio ambiente</div>
+          <div class="course-meta">FORM_ESC_007 · Anual · Interna · P/V · Todas las personas</div>
+          <div class="course-badges"><span class="cbadge cb-g">Ambiente</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Conocer las reglas de selección de residuos y aplicarlas correctamente. Cumplimiento legal y normativo, optimización de costos y mejora de la sostenibilidad.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 19/27</span>
+          <span class="cdet"><i class="ti ti-users"></i> Todas las personas</span>
+          <span class="cdet"><i class="ti ti-user"></i> A. Mendoza</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Selección de residuos y medio ambiente')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-user-plus"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Inducción a la empresa — nuevo personal</div>
+          <div class="course-meta">FORM_ESC_008 · Al ingreso · Interna · Presencial · Nuevos ingresos</div>
+          <div class="course-badges"><span class="cbadge cb-g">General</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Recibir a las nuevas personas y darles una idea general del negocio, del proceso y del producto Horse Argentina. Primera formación obligatoria al ingreso.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Al momento del ingreso</span>
+          <span class="cdet"><i class="ti ti-users"></i> Nuevos ingresos</span>
+          <span class="cdet"><i class="ti ti-user"></i> A. Díaz</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Inducción a la empresa — nuevo personal')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-cpu"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Introducción a la Inteligencia Artificial</div>
+          <div class="course-meta">FORM_ESC_016 · Anual · Interna · Presencial · Mensuales</div>
+          <div class="course-badges"><span class="cbadge cb-e">IT</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Introducir la IA, aprender la mejor manera de promptear y conocer las nuevas funcionalidades. Aplicado al entorno de trabajo de Horse Argentina.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 49</span>
+          <span class="cdet"><i class="ti ti-users"></i> Personal mensual</span>
+          <span class="cdet"><i class="ti ti-user"></i> M. Marconeto</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Introducción a la Inteligencia Artificial')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-chart-dots"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Métodos de análisis (6M · RF2 · 5PQ)</div>
+          <div class="course-meta">FORM_ESC_021 · Anual · Interna · P/V · Operadores y Mensuales</div>
+          <div class="course-badges"><span class="cbadge cb-q">Calidad</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Formación sobre los métodos de análisis utilizados en animaciones: 6M, RF2 y 5PQ. Para operadores y personal mensual.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 29/27 — Semana de la Calidad</span>
+          <span class="cdet"><i class="ti ti-users"></i> Operadores y mensuales</span>
+          <span class="cdet"><i class="ti ti-user"></i> C. Casares / V. Riorda / M. Ravanelli</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Métodos de análisis (6M · RF2 · 5PQ)')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-hd" onclick="toggleCourse(this)">
+        <div class="course-ico"><i class="ti ti-injection"></i></div>
+        <div class="course-inf">
+          <div class="course-name">Inyección — Formación teórico-práctica</div>
+          <div class="course-meta">FORM_ESC_018 · Anual · Interna · Presencial · Operadores</div>
+          <div class="course-badges"><span class="cbadge cb-f">Fabricación</span></div>
+        </div>
+        <i class="ti ti-chevron-down course-arr"></i>
+      </div>
+      <div class="course-bd">
+        <div class="course-desc">Formación teórico-práctica de inyección para revisar y afianzar conceptos del proceso, hipótesis de análisis y resolución de problemas. Planificada en días sábados.</div>
+        <div class="course-det">
+          <span class="cdet"><i class="ti ti-calendar"></i> Semana 34/26</span>
+          <span class="cdet"><i class="ti ti-users"></i> Operadores</span>
+          <span class="cdet"><i class="ti ti-user"></i> R. Rolfo</span>
+        </div>
+        <button class="btn-primary" style="font-size:12px;padding:.45rem .95rem;" onclick="openForkyReq('Inyección — Formación teórico-práctica')"><i class="ti ti-send"></i> Solicitar con Forky</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- JUEGOS -->
+<section class="section" id="games">
+  <div class="section-hd">
+    <div class="section-ey">Conocimiento en acción</div>
+    <h2 class="section-title">Poné a prueba lo que sabés</h2>
+    <p class="section-desc">Juegos y desafíos para aprender haciendo. Disponibles siempre, desde cualquier dispositivo en planta.</p>
+  </div>
+
+  <div class="games-grid">
+    <a class="game-card" href="https://consucasares75-ui.github.io/juego-5s-horse/" target="_blank">
+      <div class="game-ico"><i class="ti ti-trophy"></i></div>
+      <div class="game-title">Juego 5S Horse</div>
+      <div class="game-desc">Desafío interactivo de organización y orden. ¿Conocés las 5S de memoria?</div>
+      <span class="gpill gp-live">Jugar ahora</span>
+    </a>
+    <div class="game-card" onclick="document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'})">
+      <div class="game-ico"><i class="ti ti-brain"></i></div>
+      <div class="game-title">Quiz con IA</div>
+      <div class="game-desc">La IA genera preguntas nuevas sobre cualquier tema de planta. Siempre diferente.</div>
+      <span class="gpill gp-ai">Generador IA</span>
+    </div>
+    <div class="game-card" onclick="alert('¡Próximamente! En desarrollo.')">
+      <div class="game-ico"><i class="ti ti-puzzle"></i></div>
+      <div class="game-title">Identificá el defecto</div>
+      <div class="game-desc">Piezas HPDC — detectá la no conformidad antes que el tiempo se agote.</div>
+      <span class="gpill gp-soon">Próximamente</span>
+    </div>
+    <div class="game-card" onclick="alert('¡Próximamente! En desarrollo.')">
+      <div class="game-ico"><i class="ti ti-sort-ascending"></i></div>
+      <div class="game-title">Ordená el proceso</div>
+      <div class="game-desc">Armá la secuencia correcta del proceso HPDC de principio a fin contra el reloj.</div>
+      <span class="gpill gp-soon">Próximamente</span>
+    </div>
+  </div>
+
+  <div class="quiz-wrap" id="quiz-section">
+    <div class="quiz-top">
+      <i class="ti ti-sparkles"></i>
+      <div>
+        <h3>Generador de quiz con inteligencia artificial</h3>
+        <p>Elegí el tema · Modo · La IA genera preguntas nuevas cada vez</p>
+      </div>
+    </div>
+    <div class="quiz-body">
+      <div class="qlabel">Modo de juego</div>
+      <div class="mode-row">
+        <button class="mode-btn sel" onclick="setMode('learn',this)"><i class="ti ti-book"></i> Aprender</button>
+        <button class="mode-btn" onclick="setMode('challenge',this)"><i class="ti ti-flame"></i> Desafío</button>
+        <button class="mode-btn" onclick="setMode('audit',this)"><i class="ti ti-clipboard-check"></i> Auditoría IATF</button>
+      </div>
+      <div class="qlabel">Tema</div>
+      <div class="topic-grid">
+        <div class="topic-btn sel" onclick="setTopic(this,'HPDC — proceso de inyección de aluminio a presión en Horse Argentina')">Proceso HPDC</div>
+        <div class="topic-btn" onclick="setTopic(this,'5S y organización del puesto de trabajo en planta de manufactura')">5S</div>
+        <div class="topic-btn" onclick="setTopic(this,'IATF 16949 — requisitos y conciencia de calidad automotriz')">IATF 16949</div>
+        <div class="topic-btn" onclick="setTopic(this,'QRQC — resolución rápida de problemas de calidad en planta')">QRQC</div>
+        <div class="topic-btn" onclick="setTopic(this,'Seguridad industrial, EPP y 10 MR en planta de fundición')">Seguridad / 10MR</div>
+        <div class="topic-btn" onclick="setTopic(this,'Tratamiento de producto no conforme y sospechoso en manufactura')">No conformes</div>
+        <div class="topic-btn" onclick="setTopic(this,'Análisis de causas: 6M, RF2, 5 PQ en procesos industriales')">Análisis causas</div>
+        <div class="topic-btn" onclick="setTopic(this,'Autocontrol de operadores y criterios de aceptación de calidad')">Autocontrol</div>
+        <div class="topic-btn" onclick="setTopic(this,'FOS — fichas de operación estándar y su correcto uso e interpretación')">FOS</div>
+        <div class="topic-btn" onclick="setTopic(this,'Medio ambiente, selección de residuos y política ambiental en industria')">Medio ambiente</div>
+      </div>
+      <div class="quiz-controls">
+        <label>Preguntas:</label>
+        <select id="nq-sel"><option value="3">3</option><option value="5" selected>5</option><option value="8">8</option></select>
+        <button class="gen-btn" id="gen-btn" onclick="generateQuiz()"><i class="ti ti-sparkles"></i> Generar quiz</button>
+      </div>
+      <div class="qloading" id="qloading"><i class="ti ti-loader"></i> Generando preguntas sobre <span id="ltopic"></span>...</div>
+      <div class="quiz-area" id="quiz-area"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<div class="footer">
+  <p>Dojjos de Formación <span>Excelencia</span> · Escuela de Habilidades <span>Horse Argentina</span> · Córdoba · HPDC · 2026</p>
+</div>
+
+<!-- FORKY FAB -->
+<button class="forky-fab" onclick="toggleForky()" title="Hablar con Forky">
+  <i class="ti ti-message-chatbot"></i>
+</button>
+
+<!-- FORKY PANEL -->
+<div class="forky-panel" id="forky-panel">
+  <div class="forky-hd">
+    <div class="forky-av"><i class="ti ti-robot"></i></div>
+    <div class="forky-ht"><h4>Forky</h4><p>Tu ayudante de la Escuela · Horse Argentina</p></div>
+    <button class="forky-x" onclick="toggleForky()"><i class="ti ti-x"></i></button>
+  </div>
+  <div class="forky-msgs" id="forky-msgs"></div>
+  <div class="forky-inp-row">
+    <input class="forky-inp" id="forky-inp" placeholder="Escribile a Forky..." onkeydown="if(event.key==='Enter')sendForky()">
+    <button class="forky-send" onclick="sendForky()"><i class="ti ti-send"></i></button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-panel">
+    <div class="admin-hd">
+      <i class="ti ti-terminal-2"></i>
+      <h3>Panel de administración — Dojjos Excelencia</h3>
+      <button class="admin-x" onclick="closeAdmin()"><i class="ti ti-x"></i></button>
+    </div>
+    <div id="admin-lock" class="admin-lock">
+      <i class="ti ti-lock"></i>
+      <p>Acceso restringido al área de Excelencia Operacional.</p>
+      <input class="lock-inp" id="lock-inp" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPass()">
+      <div class="lock-err" id="lock-err">Contraseña incorrecta. Intentá de nuevo.</div>
+      <button class="btn-primary" onclick="checkPass()"><i class="ti ti-unlock"></i> Ingresar</button>
+    </div>
+    <div id="admin-main" style="display:none;flex:1;overflow:hidden;flex-direction:column;">
+      <div class="admin-body">
+        <div style="font-size:12px;color:var(--gray);padding:.5rem .75rem;background:var(--bg3);border-radius:var(--rs);border:1px solid var(--border);">
+          <strong style="color:var(--orange);">Panel activo · Excelencia Operacional.</strong> Pedime que cree nuevos juegos, agregue formadores, modifique formaciones, cambie textos o genere cualquier código actualizado para el sitio. Todo listo para copiar y subir a GitHub Pages.
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button onclick="verInscriptos()" style="display:flex;align-items:center;gap:5px;padding:.45rem .9rem;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);color:var(--white);font-size:12px;cursor:pointer;transition:border-color .15s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border2)'">
+            <i class="ti ti-mail"></i> Ver inscriptos Semana Calidad
+          </button>
+          <button onclick="borrarInscriptos()" style="display:flex;align-items:center;gap:5px;padding:.45rem .9rem;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);color:var(--gray2);font-size:12px;cursor:pointer;transition:border-color .15s;" onmouseover="this.style.borderColor='#a33'" onmouseout="this.style.borderColor='var(--border2)'">
+            <i class="ti ti-trash"></i> Borrar registros
+          </button>
+        </div>
+        <div class="admin-chat" id="admin-msgs"></div>
+        <div class="admin-inp-row">
+          <input class="admin-inp" id="admin-inp" placeholder="Ej: Agregá el juego ALERTA ROJA al catálogo de juegos..." onkeydown="if(event.key==='Enter')sendAdmin()">
+          <button class="admin-send" id="admin-send-btn" onclick="sendAdmin()"><i class="ti ti-send"></i> Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== COUNTDOWN SEMANA CALIDAD =====
+// Semana 27 2026 = lunes 29 de junio 2026
+var TARGET_DATE = new Date('2026-06-29T08:00:00');
+function updateCountdown(){
+  var now = new Date();
+  var diff = TARGET_DATE - now;
+  if(diff <= 0){
+    document.getElementById('cd-dias').textContent='¡YA!';
+    document.getElementById('cd-hs').textContent='';
+    document.getElementById('cd-min').textContent='';
+    return;
+  }
+  var dias = Math.floor(diff / (1000*60*60*24));
+  var hs   = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  var min  = Math.floor((diff % (1000*60*60)) / (1000*60));
+  document.getElementById('cd-dias').textContent = String(dias).padStart(2,'0');
+  document.getElementById('cd-hs').textContent   = String(hs).padStart(2,'0');
+  document.getElementById('cd-min').textContent  = String(min).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 30000);
+
+function notifyMe(){
+  var val = document.getElementById('notify-email').value.trim();
+  if(!val){ document.getElementById('notify-email').focus(); return; }
+  // Save to localStorage
+  var registros = JSON.parse(localStorage.getItem('dojjos_emails') || '[]');
+  var ya = registros.find(r => r.email === val);
+  if(!ya){
+    registros.push({email: val, fecha: new Date().toLocaleString('es-AR')});
+    localStorage.setItem('dojjos_emails', JSON.stringify(registros));
+  }
+  document.getElementById('notify-form').style.display='none';
+  document.getElementById('notify-ok').style.display='block';
+}
+
+// ===== UTILS =====
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+
+// ===== CERT MODAL =====
+function openCert(init,name,user,proceso,areas,exp,year){
+  document.getElementById('c-av').textContent=init;
+  document.getElementById('c-name').textContent=name;
+  document.getElementById('c-user').textContent=user?(user+' · '+proceso):proceso;
+  document.getElementById('c-areas').textContent=areas;
+  document.getElementById('c-exp').textContent=exp;
+  document.getElementById('c-year').textContent='Validación '+year;
+  document.getElementById('cert-modal').classList.add('open');
+}
+function closeCert(){document.getElementById('cert-modal').classList.remove('open');}
+document.getElementById('cert-modal').addEventListener('click',function(e){if(e.target===this)closeCert();});
+
+// ===== COURSES ACCORDION =====
+function toggleCourse(hd){
+  var bd=hd.nextElementSibling;
+  var arr=hd.querySelector('.course-arr');
+  bd.classList.toggle('open');
+  arr.classList.toggle('open');
+}
+
+// ===== QUIZ =====
+var qMode='learn', qTopic='HPDC — proceso de inyección de aluminio a presión en Horse Argentina';
+var qData=[],qAnswered=0,qCorrect=0;
+
+function setMode(m,btn){qMode=m;document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+function setTopic(el,t){qTopic=t;document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+
+async function generateQuiz(){
+  var nq=parseInt(document.getElementById('nq-sel').value);
+  var btn=document.getElementById('gen-btn');
+  var loading=document.getElementById('qloading');
+  var area=document.getElementById('quiz-area');
+  btn.disabled=true;loading.style.display='block';
+  document.getElementById('ltopic').textContent=qTopic;
+  area.innerHTML='';qData=[];qAnswered=0;qCorrect=0;
+  var modeMap={
+    learn:'Modo aprendizaje: incluí una explicación clara y didáctica en cada pregunta para que el operador aprenda.',
+    challenge:'Modo desafío: preguntas difíciles con opciones similares. Sin explicaciones extensas.',
+    audit:'Modo auditoría IATF 16949: orientado exactamente a lo que un auditor externo preguntaría al operador en planta.'
+  };
+  var prompt=`Sos experto en manufactura HPDC (inyección de aluminio a presión) y sistemas de calidad IATF 16949 en Argentina. Trabajás en contexto de planta automotriz (proveedor Renault/Horse Argentina, Córdoba). Generá exactamente ${nq} preguntas de opción múltiple sobre: "${qTopic}". ${modeMap[qMode]} Respondé SOLO con JSON válido sin texto ni backticks ni explicación previa: [{"pregunta":"...","opciones":["A. ...","B. ...","C. ...","D. ..."],"correcta":"A","explicacion":"..."}]`;
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]})});
+    var d=await r.json();
+    var raw=d.content.map(i=>i.text||'').join('');
+    qData=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    loading.style.display='none';btn.disabled=false;
+    renderQuiz(area);
+  }catch(e){
+    loading.style.display='none';btn.disabled=false;
+    area.innerHTML='<div style="font-size:13px;color:var(--gray);padding:1rem;text-align:center;">No se pudieron generar las preguntas. Verificá tu conexión e intentá de nuevo.</div>';
+  }
+}
+function renderQuiz(area){
+  area.innerHTML='';
+  qData.forEach((q,i)=>{
+    var d=document.createElement('div');d.className='q-block';
+    d.innerHTML=`<div class="q-num">Pregunta ${i+1} de ${qData.length}</div>
+      <div class="q-text">${q.pregunta}</div>
+      <div class="q-opts">${q.opciones.map(o=>`<button class="q-opt" data-l="${o.charAt(0)}" onclick="answerQ(this,${i},'${o.charAt(0)}','${q.correcta}')">${o}</button>`).join('')}</div>
+      <div class="q-expl" id="qe-${i}">${q.explicacion}</div>`;
+    area.appendChild(d);
+  });
+}
+function answerQ(btn,qi,l,cor){
+  btn.closest('.q-block').querySelectorAll('.q-opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.l===cor)b.classList.add('correct');
+    else if(b===btn&&l!==cor)b.classList.add('wrong');
+  });
+  document.getElementById('qe-'+qi).classList.add('show');
+  qAnswered++;if(l===cor)qCorrect++;
+  if(qAnswered===qData.length)showScore();
+}
+function showScore(){
+  var area=document.getElementById('quiz-area');
+  var pct=Math.round((qCorrect/qData.length)*100);
+  var msg=pct>=80?'¡Excelente! Dominás este tema. 🏆':pct>=50?'Bien, hay margen para mejorar. Seguí practicando.':'Revisá el material y volvé a intentarlo. ¡Vas a poder!';
+  var d=document.createElement('div');d.className='score-card';d.style.display='block';
+  d.innerHTML=`<div class="score-num">${pct}%</div><div class="score-sub">${qCorrect} de ${qData.length} respuestas correctas</div><div class="score-msg">${msg}</div><button class="retry-btn" onclick="generateQuiz()">Nuevo quiz</button>`;
+  area.appendChild(d);
+}
+
+// ===== FORKY =====
+var FORKY_SYS=`Sos Forky, el asistente amigable de la Escuela de Habilidades Horse Argentina, planta HPDC en Córdoba, Argentina. Hablás en español argentino con voseo, sos simpático, directo y eficiente.
+
+Tu función es ayudar al personal de planta con 4 opciones:
+
+1. SOLICITAR FORMACIÓN: preguntás nombre completo, legajo, sector (Fusión/Inyección/Metrología/Mantenimiento/Calidad/Logística/HSE/Administrativo/etc), turno (mañana/tarde/noche), la formación que desea (de la lista disponible) y el motivo. Al final generás el texto del mail listo para copiar:
+   - PARA: el formador correspondiente
+   - ASUNTO y CUERPO completo con todos los datos
+
+2. VALIDARSE COMO FORMADOR: preguntás nombre, legajo, sector, formación que quiere dictar y por qué se considera apto (experiencia, formaciones realizadas). Generás el mail para Consuelo Casares (responsable de Excelencia Operacional).
+
+3. PROPUESTA DE MEJORA: preguntás nombre, área/sector, descripción del problema o mejora, impacto estimado. Generás el mail para Consuelo Casares.
+
+4. CHAT LIBRE: respondés preguntas sobre el proceso HPDC, formaciones, calidad, 5S, seguridad, IATF 16949, etc.
+
+FORMACIONES DISPONIBLES: Política de Calidad (L. Catalán), QRQC (L. Catalán), 5S Supervisores (M. Ranguinao), 5S Operadores (Vannucci/Barrionuevo/Ruano/Farías/Ivanoff/Mazzoni/Cambi), Criterios de aceptación de calidad (S. Paz), Análisis de causas (L. Catalán/M. Ravanelli), Creación de FIPS con Excelencia (C. Casares), Tratamiento de producto no conforme (S. Paz/M. Ravanelli), OPT (M. Ravanelli), 10 MR (M. Ranguinao/S. Paz), Selección de residuos (A. Mendoza), Inducción nuevo personal (A. Díaz), Introducción IA (M. Marconeto), Métodos de análisis 6M/RF2/5PQ (C. Casares/V. Riorda/M. Ravanelli), Inyección HPDC (R. Rolfo).
+
+Cuando terminás una gestión, preguntás si querés hacer otra cosa. Sé conciso, amigable y usá emojis con moderación.`;
+
+var forkyOpen=false, forkyHist=[], forkyInit=false;
+
+function toggleForky(){
+  forkyOpen=!forkyOpen;
+  document.getElementById('forky-panel').classList.toggle('open',forkyOpen);
+  if(forkyOpen&&!forkyInit){
+    forkyInit=true;
+    addFMsg('bot','¡Hola! Soy <strong>Forky</strong> 🤖, tu ayudante de la Escuela de Habilidades Horse Argentina.\n¿En qué te puedo ayudar hoy?');
+    showFMenu();
+  }
+}
+function showFMenu(){
+  var msgs=document.getElementById('forky-msgs');
+  var d=document.createElement('div');d.className='fmsg bot';
+  d.innerHTML=`<div class="fmenu">
+    <button class="fmenu-btn" onclick="fOpt('Quiero solicitar una formación')"><i class="ti ti-school"></i> Solicitar una formación</button>
+    <button class="fmenu-btn" onclick="fOpt('Quiero validarme como formador de la Escuela')"><i class="ti ti-certificate"></i> Validarme como formador</button>
+    <button class="fmenu-btn" onclick="fOpt('Quiero hacer una propuesta de mejora')"><i class="ti ti-bulb"></i> Proponer una mejora</button>
+    <button class="fmenu-btn" onclick="fOpt('Tengo una consulta libre')"><i class="ti ti-message"></i> Hacer una pregunta</button>
+  </div>`;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+function fOpt(txt){
+  addFMsg('user',txt);
+  forkyHist.push({role:'user',content:txt});
+  sendForkyAPI();
+}
+function addFMsg(who,txt){
+  var msgs=document.getElementById('forky-msgs');
+  var d=document.createElement('div');d.className='fmsg '+who;
+  d.innerHTML=txt.replace(/\n/g,'<br>');
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+async function sendForky(){
+  var inp=document.getElementById('forky-inp');
+  var txt=inp.value.trim();if(!txt)return;
+  inp.value='';
+  addFMsg('user',txt);
+  forkyHist.push({role:'user',content:txt});
+  sendForkyAPI();
+}
+async function sendForkyAPI(){
+  var typing=document.createElement('div');typing.className='fmsg bot';typing.id='ftyping';
+  typing.innerHTML='<i class="ti ti-dots" style="animation:spin 1s linear infinite;font-size:15px;color:var(--orange);"></i>';
+  document.getElementById('forky-msgs').appendChild(typing);
+  document.getElementById('forky-msgs').scrollTop=99999;
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,system:FORKY_SYS,messages:forkyHist})});
+    var d=await r.json();
+    var reply=d.content.map(i=>i.text||'').join('');
+    document.getElementById('ftyping')?.remove();
+    addFMsg('bot',reply);
+    forkyHist.push({role:'assistant',content:reply});
+    if(reply.toLowerCase().includes('algo más')||reply.toLowerCase().includes('otra consulta')){
+      setTimeout(showFMenu,500);
+    }
+  }catch(e){
+    document.getElementById('ftyping')?.remove();
+    addFMsg('bot','Ups, tuve un problema técnico. Intentá de nuevo en un momento. 🙁');
+  }
+}
+function openForkyReq(course){
+  if(!forkyOpen)toggleForky();
+  setTimeout(()=>{
+    var txt=`Quiero solicitar la formación: "${course}"`;
+    addFMsg('user',txt);
+    forkyHist.push({role:'user',content:txt});
+    sendForkyAPI();
+  },forkyInit?100:600);
+  forkyInit=true;
+}
+
+// ===== ADMIN =====
+var ADMIN_PASS='excelencia2026';
+var adminHist=[], adminUnlocked=false;
+var ADMIN_SYS=`Sos el asistente de administración de la web "Dojjos de Formación Excelencia" de Horse Argentina (planta HPDC, Córdoba). Hablás en español argentino.
+
+Podés:
+1. Crear nuevos juegos interactivos (HTML/JS completo listo para insertar)
+2. Modificar secciones: agregar formadores, actualizar formaciones, cambiar textos
+3. Generar código HTML actualizado para cualquier parte del sitio
+4. Diseñar nuevas secciones o funcionalidades
+
+Cuando generás código, lo presentás en bloques bien formateados con instrucciones claras de dónde insertarlo. Sos técnicamente preciso y eficiente.`;
+
+function openAdmin(){document.getElementById('admin-overlay').classList.add('open');document.getElementById('lock-inp').focus();}
+function closeAdmin(){document.getElementById('admin-overlay').classList.remove('open');}
+document.getElementById('admin-overlay').addEventListener('click',function(e){if(e.target===this)closeAdmin();});
+
+function checkPass(){
+  if(document.getElementById('lock-inp').value===ADMIN_PASS){
+    document.getElementById('admin-lock').style.display='none';
+    var m=document.getElementById('admin-main');m.style.display='flex';
+    if(adminHist.length===0){
+      // Show email registros on first open
+      var registros = JSON.parse(localStorage.getItem('dojjos_emails') || '[]');
+      var resumen = registros.length === 0
+        ? 'Todavía no hay inscriptos registrados.'
+        : '📋 Inscriptos Semana de la Calidad (' + registros.length + '):\n' +
+          registros.map((r,i) => (i+1)+'. ' + r.email + ' — ' + r.fecha).join('\n');
+      addAMsg('bot','Panel admin activo ✓\n\n' + resumen + '\n\n──────────────\nTambién puedo ayudarte a:\n• Crear nuevos juegos (ALERTA ROJA, memoria, etc.)\n• Agregar o actualizar formadores y formaciones\n• Generar código para nuevas secciones\n• Cualquier cambio que necesites en la web\n\n¿Qué modificamos hoy?');
+    }
+  }else{
+    document.getElementById('lock-err').style.display='block';
+    document.getElementById('lock-inp').value='';
+    document.getElementById('lock-inp').focus();
+  }
+}
+
+function verInscriptos(){
+  var registros = JSON.parse(localStorage.getItem('dojjos_emails') || '[]');
+  if(registros.length === 0){ addAMsg('bot','Todavía no hay inscriptos registrados.'); return; }
+  var txt = '📋 Inscriptos Semana de la Calidad (' + registros.length + '):\n' +
+    registros.map((r,i) => (i+1)+'. ' + r.email + ' — ' + r.fecha).join('\n');
+  addAMsg('bot', txt);
+}
+function borrarInscriptos(){
+  if(!confirm('¿Segura que querés borrar todos los registros de inscriptos?')) return;
+  localStorage.removeItem('dojjos_emails');
+  addAMsg('bot','✓ Registros borrados correctamente.');
+}
+function addAMsg(who,txt){
+  var msgs=document.getElementById('admin-msgs');
+  var d=document.createElement('div');d.className='amsg '+who;
+  d.innerHTML=txt.replace(/\n/g,'<br>').replace(/```([\s\S]*?)```/g,'<pre style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.65rem;overflow-x:auto;font-size:11px;margin:.4rem 0;white-space:pre-wrap;"><code>$1</code></pre>');
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+async function sendAdmin(){
+  var inp=document.getElementById('admin-inp');
+  var txt=inp.value.trim();if(!txt)return;
+  inp.value='';
+  addAMsg('user',txt);
+  adminHist.push({role:'user',content:txt});
+  var btn=document.getElementById('admin-send-btn');btn.disabled=true;
+  var typing=document.createElement('div');typing.className='amsg bot';typing.id='atyping';
+  typing.innerHTML='<i class="ti ti-loader" style="animation:spin 1s linear infinite;font-size:15px;color:var(--orange);"></i> Procesando...';
+  document.getElementById('admin-msgs').appendChild(typing);document.getElementById('admin-msgs').scrollTop=99999;
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,system:ADMIN_SYS,messages:adminHist})});
+    var d=await r.json();
+    var reply=d.content.map(i=>i.text||'').join('');
+    document.getElementById('atyping')?.remove();
+    addAMsg('bot',reply);
+    adminHist.push({role:'assistant',content:reply});
+  }catch(e){
+    document.getElementById('atyping')?.remove();
+    addAMsg('bot','Error de conexión. Verificá tu conexión e intentá de nuevo.');
+  }
+  btn.disabled=false;
+}
+</script>
+</body>
+</html>
